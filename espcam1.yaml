@@ -6,25 +6,20 @@ esphome:
 wifi:
   ssid: "Rabenherz"
   password: "12345678"
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Espcam1 Fallback Hotspot"
-    password: "ZS9XKCISWDD6"
+    ssid: "EspcamFallback"
+    password: "12345678"
 
 captive_portal:
 
 # Enable logging
 logger:
-
-# Enable Home Assistant API
 api:
-  password: "1204"
-
+  password: "12345678"
 ota:
-  password: "1204"
+  password: "12345678"
   
-# Example configuration entry
+# configuration --> AI THINKER <--
 esp32_camera:
   external_clock:
     pin: GPIO0
@@ -40,26 +35,21 @@ esp32_camera:
   vertical_flip: false
   horizontal_mirror: false
   resolution: 800x600
-
   # Image settings
-  name: ESP32Camera
+  name: ESP32_Cam_1_Camera
   # ...
 output:
   - platform: gpio
     pin: GPIO4
     id: gpio_4
-
 binary_sensor:
   - platform: status
-    name: "ESP32_ Camera_Status"
-    
+    name: "ESP32_Cam_1_Status"    
 sensor:
   - platform: wifi_signal
-    name: "ESP32_Camera_Signal"
+    name: "ESP32_Cam_1_Signal"
     update_interval: 20s
-
 light:
   - platform: binary
     output: gpio_4
-    name: "ESP32_Camera_Licht"
-
+    name: "ESP32_Cam_1_Licht"
