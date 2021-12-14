@@ -4,6 +4,14 @@
 
 ![keine warnung](/img/dwd_0.jpg)
 
+## Home-Assistant Integration
+- [DWD Weather Warnings](https://www.home-assistant.io/integrations/dwd_weather_warnings/)
+- [Generic Camera](https://www.home-assistant.io/integrations/generic/)
+## DWD Daten:
+- [Wetterwarnung Grafik URLs](https://www.dwd.de/DE/wetter/warnungen_aktuell/objekt_einbindung/objekteinbindung.html)
+- [Zellen-IDs](https://www.dwd.de/DE/leistungen/opendata/help/warnungen/cap_warncellids_csv.html)
+
+
 add configuration.yaml
 
 ## Warnungen
