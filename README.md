@@ -5,7 +5,8 @@ Meine Home Assistant einstellungen
 <h3>Home-Assistant /h3>
 <ul>
   <li>switch.yaml RF-Codes (RF-Sender)</li>
-<u/l>
+</ul>
+<br />
 <h3>esp Home new</h3>
 <ul>
   <li>ESP8266 -> waveshare-v1.yaml (E-Papper)</li>
@@ -16,4 +17,4 @@ Meine Home Assistant einstellungen
     <li>ESP8266 -> Nextion Display ->BME280</li>
     <li>esp8266 -> 2xds18b20 -> Fenster Kontakt </li>
   </ul>
-<u/l>
+</ul>
