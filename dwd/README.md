@@ -39,6 +39,8 @@ camera:
 ```
 
 # Pollenflug-Daten in Home Assistant
+
+
 - [Polleninformationen DWD](https://www.dwd.de/DE/klimaumwelt/ku_beratung/gesundheit/pollen/pollen_node.html)
 - [Pollenflug Gefahrenindex (Karte)](https://isabel.dwd.de/DE/leistungen/gefahrenindizespollen/gefahrenindexpollen.html)
 - [DWD OpenData](https://www.dwd.de/DE/leistungen/opendata/opendata.html)
@@ -67,6 +69,11 @@ sensor:
 einzel daten as template:
 ```yml
 sensor:
+  - platform: rest # dwd_pollen
+    #....
+    #....
+    #....
+    
   - platform: template # DWD-Pollenflug
     sensors:
       dwd_pollen_erle:
@@ -183,3 +190,149 @@ sensor:
 ```
 
 
+# Bar-Card (HACS Frontend Integration):
+- [Bar-Card](https://github.com/custom-cards/bar-card)
+
+![pollenflug](/img/dwd_1.jpg)
+
+```yml
+type: custom:bar-card
+entities:
+  - entity: sensor.dwd_pollen_ambrosia
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_beifuss
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_birke
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_erle
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_esche
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_graeser
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_hasel
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+  - entity: sensor.dwd_pollen_roggen
+    max: '6'
+    min: '0'
+    decimal: '0'
+    severity:
+      - from: '0'
+        to: '0'
+        color: cyan
+      - from: '1'
+        to: '1'
+        color: green
+      - from: '2'
+        to: '4'
+        color: yellow
+      - from: '5'
+        color: red
+        to: '6'
+title: Pollenflug Informationen
+```
