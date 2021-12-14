@@ -1,0 +1,32 @@
+# Add configuration.yaml
+# switch: !include switch.yaml
+switch:
+  - platform: rpi_rf
+    gpio: 17
+    switches:
+      # house Code 10111
+      RF_sw_1: # id 1
+        code_on: 1049937
+        code_off: 1049940
+      RF_sw_2: # id 2
+        code_on: 1053009
+        code_off: 1053012
+      RF_sw_3: # id 3
+        code_on: 1053777
+        code_off: 1053780
+      RF_sw_4: # id 4
+        code_on: 1053969
+        code_off: 1053972
+      # house Code 00111
+      RF_sw_5: # id 1
+        code_on: 5244241
+        code_off: 5244244
+      RF_sw_6: # id 2
+        code_on: 5247313
+        code_off: 5247316
+      RF_sw_7: # id 3
+        code_on: 5248081
+        code_off: 5248084
+      RF_sw_8: # id 4
+        code_on: 5248273
+        code_off: 5248276
