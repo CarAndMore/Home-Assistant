@@ -12,7 +12,7 @@ api:
   password: !secret hass_api_password
 
 ota:
-  password: "6f6de9ca32d147a66403f7601ce5fb5a"
+  password: !secret hass_ota_password
 
 wifi:
   ssid: !secret wifi_ssid
