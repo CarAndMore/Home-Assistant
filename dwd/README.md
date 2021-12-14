@@ -1,7 +1,11 @@
 # Wetterwarnungen in Home Assistant
+*idee by* SmartHome yourself [Wetterwarnungen in Home Assistant einbinden ...](https://www.youtube.com/watch?v=yYK5giUO19E) **(YouTube)**
+
+
 ![keine warnung](/img/dwd_0.jpg)
 
 add configuration.yaml
+
 ## Warnungen
 ```yml
 sensor:
