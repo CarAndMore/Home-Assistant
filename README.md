@@ -8,14 +8,14 @@ Meine Home Assistant einstellungen
 </ul>
 <br />
 <h3>esp Home</h3>
+<h4>new</h4>
 <ul>
-  <h4>new</h4>
   <li>ESP8266 -> waveshare-v1.yaml (E-Papper)</li>
   <li>esp32 ->bad-esp32.yaml (Oled, bme280, bh1750)</li>
   <h4>Old</h4>
-  <ul>
-    <li>ESP32 Cam</li>
-    <li>ESP8266 -> Nextion Display ->BME280</li>
-    <li>esp8266 -> 2xds18b20 -> Fenster Kontakt </li>
-  </ul>
+</ul>
+<li>ESP32 Cam</li>
+<ul>
+  <li>ESP8266 -> Nextion Display ->BME280</li>
+  <li>esp8266 -> 2xds18b20 -> Fenster Kontakt </li>
 </ul>
