@@ -1,6 +1,6 @@
 # Waveshare 2.9 zoll  # 296 x 128
 
-[waveshare-v1.yaml](/waveshare-v1.yaml)
+[waveshare-v1.yaml](/waveshare/waveshare-v1.yaml)
 
 EspHome: [Waveshare E-Paper Display](https://esphome.io/components/display/waveshare_epaper.html)
 
