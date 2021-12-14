@@ -40,154 +40,61 @@ camera:
 
 # Pollenflug-Daten in Home Assistant
 
-
 - [Polleninformationen DWD](https://www.dwd.de/DE/klimaumwelt/ku_beratung/gesundheit/pollen/pollen_node.html)
 - [Pollenflug Gefahrenindex (Karte)](https://isabel.dwd.de/DE/leistungen/gefahrenindizespollen/gefahrenindexpollen.html)
 - [DWD OpenData](https://www.dwd.de/DE/leistungen/opendata/opendata.html)
 - [Pollen-Gefahrenindex Dokumentation](https://opendata.dwd.de/climate_environment/health/alerts/Beschreibung_pollen_s31fg.pdf) **PDF**
 
+[dwd_pollen.yaml](/dwd/dwd_pollen.yaml)
+
+edit: "@.partregion_id=="  
 
 ```yml
 sensor:
   - platform: rest # dwd_pollen
     scan_interval: 3600
     name: dwd_pollen
-    resource: https://opendata.dwd.de/climate_environment/health/alerts/s31fg.json
+    #....
     json_attributes_path:  "$..content[?(@.partregion_id==102)].Pollen"
-    json_attributes:
-      - Erle
-      - Beifuss
-      - Ambrosia
-      - Birke
-      - Esche
-      - Hasel
-      - Graeser
-      - Roggen
-    value_template: "{{ value_json.last_update }}"
+    #......
 ```
-
-einzel daten as template:
-```yml
-sensor:
-  - platform: rest # dwd_pollen
-    #....
-    #....
-    #....
-    
-  - platform: template # DWD-Pollenflug
-    sensors:
-      dwd_pollen_erle:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Erle"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Erle')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Erle')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Erle')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_beifuss:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Beifuss"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Beifuss')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Beifuss')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Beifuss')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_ambrosia:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Ambrosia"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Ambrosia')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Ambrosia')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Ambrosia')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_birke:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Birke"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Birke')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Birke')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Birke')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_esche:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Esche"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Esche')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Esche')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Esche')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_hasel:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Hasel"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Hasel')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Hasel')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Hasel')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_graeser:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Graeser"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Graeser')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Graeser')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Graeser')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-
-      dwd_pollen_roggen:
-        icon_template: "mdi:tree-outline"
-        friendly_name: "Roggen"
-        value_template: >-
-          {% set dwd_state = state_attr('sensor.dwd_pollen', 'Roggen')['today'] %}
-          {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-        attribute_templates:
-          today: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Roggen')['today'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-          tomorrow: >-
-            {% set dwd_state = state_attr('sensor.dwd_pollen', 'Roggen')['tomorrow'] %}
-            {% if dwd_state == "3" %}6{% elif dwd_state == "2-3"%}5{% elif dwd_state == "2"%}4{% elif dwd_state == "1-2"%}3{% elif dwd_state == "1"%}2{% elif dwd_state == "0-1"%}1{% else %}0{% endif %}
-```
+- 10=Schleswig-Holstein und Hamburg
+- 11=Inseln und Marschen
+- 12=Geest,Schleswig-Holstein und Hamburg
+- 20=Mecklenburg-Vorpommern
+- 30=Niedersachsen und Bremen
+- 31=Westl. Niedersachsen/Bremen
+- 32=Östl. Niedersachsen
+- 40=Nordrhein-Westfalen
+- 41=Rhein.-Westfäl. Tiefland
+- 42=Ostwestfalen
+- 43=Mittelgebirge NRW
+- 50=Brandenburg und Berlin
+- 60=Sachsen-Anhalt
+- 61=Tiefland Sachsen-Anhalt
+- 62=Harz
+- 70=Thüringen
+- 71=Tiefland Thüringen
+- 72=Mittelgebirge Thüringen
+- 80=Sachsen
+- 81=Tiefland Sachsen
+- 82=Mittelgebirge Sachsen
+- 90=Hessen
+- 91=Nordhessen und hess. Mittelgebirge
+- 92=Rhein-Main
+- 100=Rheinland-Pfalz und Saarland
+- 101=Rhein, Pfalz, Nahe und Mosel
+- 102=Mittelgebirgsbereich Rheinland-Pfalz
+- 103=Saarland
+- 110=Baden-Württemberg
+- 111=Oberrhein und unteres Neckartal
+- 112=Hohenlohe/mittlerer Neckar/Oberschwaben
+- 113=Mittelgebirge Baden-Württemberg
+- 120=Bayern
+- 121=Allgäu/Oberbayern/Bay. Wald
+- 122=Donauniederungen
+- 123=Bayern nördl. der Donau, o. Bayr. Wald, o. Mainfranken
+- 124=Mainfranken
 
 
 # Bar-Card (HACS Frontend Integration):
@@ -195,144 +102,5 @@ sensor:
 
 ![pollenflug](/img/dwd_1.jpg)
 
-```yml
-type: custom:bar-card
-entities:
-  - entity: sensor.dwd_pollen_ambrosia
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_beifuss
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_birke
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_erle
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_esche
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_graeser
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_hasel
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-  - entity: sensor.dwd_pollen_roggen
-    max: '6'
-    min: '0'
-    decimal: '0'
-    severity:
-      - from: '0'
-        to: '0'
-        color: cyan
-      - from: '1'
-        to: '1'
-        color: green
-      - from: '2'
-        to: '4'
-        color: yellow
-      - from: '5'
-        color: red
-        to: '6'
-title: Pollenflug Informationen
-```
+[Bar-Card.yaml](/dwd/Bar-Card.yaml)
+
