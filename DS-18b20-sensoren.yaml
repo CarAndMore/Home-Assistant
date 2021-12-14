@@ -1,0 +1,11 @@
+DS-18b20:
+  - id: 28_05167180e7ff
+    name: Aussen
+  - id: 28_051671906aff
+    name: Kueche
+  - id: 28_031672127fff
+    name: Badezimmer
+  - id: 28_051671ad09ff
+    name: Flur
+  - id: 28_
+    name: Wohnzimmer
