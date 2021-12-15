@@ -3,6 +3,11 @@ Arduino _esp8266_ code: [ntp_ht16k33_uhr_v1.0.6.ino](/esp_Uhr/ntp_ht16k33_uhr_v1
 
 ![modul](/img/ht16k33_clock.jpg)
 
+install Libs:
+- Adafruit_GFX.h
+- Adafruit_LEDBackpack.h
+- ArduinoOTA.h (wenn Def OTA)
+
 ## Hardware Anschluss:
 <table>
   <tr>
@@ -24,8 +29,13 @@ Arduino _esp8266_ code: [ntp_ht16k33_uhr_v1.0.6.ino](/esp_Uhr/ntp_ht16k33_uhr_v1
 
 ## w-Lan Daten:
 ```cpp
-#define STASSID "Rabenherz"
-#define STAPSK  "12345678"
+#define STASSID "streng Geheim"
+#define STAPSK  "1234567890abcdefg"
+#define HOSTNAME  "ntp-uhr"
+
+#define OTA // auskommentieren um OnTheAir zu Deaktivieren
+
+#define OTA_PASSWD "ABCDEF1234567890" // Nur wenn OTA aktivieren
 ```
 
 ## I²C Divice Addr:
