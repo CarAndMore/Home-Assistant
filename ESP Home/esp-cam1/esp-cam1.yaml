@@ -1,0 +1,72 @@
+esphome:
+  name: esp-cam1
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  password: !secret hass_api_password
+
+ota:
+  password: !secret hass_ota_password
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+
+captive_portal:
+
+#- IOs ------------------------
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: gpio_4
+
+#- Cams -----------------------
+esp32_camera:
+  external_clock:
+    pin: GPIO0
+    frequency: 20MHz
+  i2c_pins:
+    sda: GPIO26
+    scl: GPIO27
+  data_pins: [GPIO5, GPIO18, GPIO19, GPIO21, GPIO36, GPIO39, GPIO34, GPIO35]
+  vsync_pin: GPIO25
+  href_pin: GPIO23
+  pixel_clock_pin: GPIO22
+  power_down_pin: GPIO32
+
+  # Image settings
+  jpeg_quality: 10 # 10 (best) to 63 (worst). Defaults to 10.
+  vertical_flip: true
+  horizontal_mirror: true
+  resolution: 1024x768 #800x600 ; 1024x768 ; 1280x1024
+  name: "esp-cam1 Camera"
+
+#- lights ---------------------
+light:
+  - platform: binary
+    output: gpio_4
+    name: "esp-cam1 Licht"
+
+#- Binary Sensoren ------------
+binary_sensor:
+  - platform: status
+    name: "esp-cam1 Status"
+
+#- Sensoren -------------------
+sensor:
+  - platform: wifi_signal
+    name: "esp-cam1 Signal"
+    update_interval: 30s
+    
+  - platform: uptime
+    name: "esp-cam1 Uptime"
+    update_interval: 30s
