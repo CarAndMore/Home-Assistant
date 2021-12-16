@@ -18,11 +18,6 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: "Waveshare-V1-Fallback"
-    password: "sadfasdfncvtrzw54645yxcvyxcv"
-
 captive_portal:
 
 #- IOs ------------------------
@@ -90,6 +85,10 @@ sensor:
   - platform: wifi_signal
     name: "waveshare-v1 Signal"
     update_interval: 30s
+    
+  - platform: uptime
+    name: waveshare-v1 Uptime
+    update_interval: 30s
 
   - platform: homeassistant
     id: aussen_temperature
@@ -101,6 +100,7 @@ sensor:
     entity_id: sensor.28_051671ad09ff_temperature
     internal: true
 
+#- Timer ----------------------
 time:
   - platform: homeassistant
     id: esptime
