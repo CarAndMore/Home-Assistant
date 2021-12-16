@@ -28,7 +28,7 @@ spi:
 
 #- Display --------------------
 display:
-  - platform: st7735
+  - platform: st7735 # 160x128
     model: "INITR_18BLACKTAB"
     reset_pin: 18
     cs_pin: 26
@@ -43,21 +43,18 @@ display:
     update_interval: 5s
     
     lambda: |-
-      it.strftime(0, 0, id(font3), TextAlign::TOP_LEFT, "%H:%M", id(esptime).now());
-      it.strftime(0, 75, id(font2), TextAlign::TOP_LEFT, "%d. %b. %Y", id(esptime).now());
+      it.strftime(0, 0, id(font3), id(ca_yellow2), TextAlign::TOP_LEFT, "%H:%M", id(esptime).now());
+      it.strftime(0, 75, id(font2), id(ca_violet), TextAlign::TOP_LEFT, "%d. %b. %Y", id(esptime).now());
 
 
 #- Display Addons -------------
 font:
   - file: 'fonts/bahnschrift.ttf'
-    id: font1
-    size: 16
-  - file: 'fonts/bahnschrift.ttf'
     id: font2
-    size: 24
+    size: 26
   - file: 'fonts/bahnschrift.ttf'
     id: font3
-    size: 72
+    size: 68
 
 color:
   - id: ca_red
@@ -95,17 +92,25 @@ color:
     green: 0%
     blue: 100%
     white: 0%
-  
+  - id: ca_violet
+    red: 100%
+    green: 0%
+    blue: 100%
+    white: 0%
+
 #- Binary Sensoren ------------
 binary_sensor:
   - platform: status
     name: "St7735-Display Status"    
 
-
 #- Sensoren -------------------
 sensor:
   - platform: wifi_signal
     name: "St7735-Display Signal"
+    update_interval: 30s
+    
+  - platform: uptime
+    name: St7735-Display Uptime
     update_interval: 30s
 
   - platform: homeassistant
@@ -118,7 +123,8 @@ sensor:
     entity_id: sensor.28_051671ad09ff_temperature
     internal: true
 
+#- Timer ----------------------
 time:
   - platform: homeassistant
     id: esptime
-        
+
