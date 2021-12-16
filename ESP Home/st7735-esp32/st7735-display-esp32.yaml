@@ -59,6 +59,43 @@ font:
     id: font3
     size: 72
 
+color:
+  - id: ca_red
+    red: 100%
+    green: 0%
+    blue: 0%
+    white: 0%
+    
+  - id: ca_yellow1
+    red: 100%
+    green: 100%
+    blue: 0%
+    white: 0%
+    
+  - id: ca_yellow2
+    red: 100%
+    green: 60%
+    blue: 0%
+    white: 0%
+    
+  - id: ca_orang
+    red: 100%
+    green: 40%
+    blue: 0%
+    white: 0%
+  
+  - id: ca_green
+    red: 0%
+    green: 100%
+    blue: 0%
+    white: 0%
+    
+  - id: ca_blue
+    red: 0%
+    green: 0%
+    blue: 100%
+    white: 0%
+  
 #- Binary Sensoren ------------
 binary_sensor:
   - platform: status
