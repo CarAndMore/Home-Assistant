@@ -20,11 +20,6 @@ wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
 
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
-  ap:
-    ssid: "Esp32-Bme280 Fallback Hotspot"
-    password: "Eac13dbnIAuA"
-
 captive_portal:
 #------------------------------
 
@@ -45,7 +40,7 @@ display:
     pages:
       - id: page1
         lambda: |-
-          it.strftime(2, 2, id(bahnschrift), TextAlign::TOP_LEFT, "%H:%M", id(esptime).now());
+          it.strftime(2, 2, id(IMMORTAL_22), TextAlign::TOP_LEFT, "%H:%M", id(esptime).now());
       - id: page2
         lambda: |-
          if (id(aussen_temperature).has_state()) {
@@ -56,10 +51,15 @@ display:
          if (id(innen_temperature).has_state()) {
            it.printf(127, 2, id(bahnschrift), TextAlign::TOP_RIGHT , "In: %.1f°C", id(innen_temperature).state);
           }
+
 #- Display Addons -------------
 font:
   - file: 'fonts/bahnschrift.ttf'
     id: bahnschrift
+    size: 22
+    
+  - file: 'fonts/IMMORTAL.ttf'
+    id: IMMORTAL_22
     size: 22
     
 interval:
@@ -77,6 +77,10 @@ binary_sensor:
 sensor:
   - platform: wifi_signal
     name: "bad-esp32 Signal"
+    update_interval: 30s
+    
+  - platform: uptime
+    name: "bad-esp32 Uptime"
     update_interval: 30s
     
   - platform: bh1750
@@ -109,6 +113,7 @@ sensor:
     entity_id: sensor.28_051671ad09ff_temperature
     internal: true
 
+#- Timer ----------------------
 time:
   - platform: homeassistant
     id: esptime
