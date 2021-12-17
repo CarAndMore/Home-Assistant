@@ -1,6 +1,8 @@
 DS-18b20:
   - id: 28_05167180e7ff
     name: Aussen
+  - id: 28_020992450e6c
+    name: Wohnzimmer
   - id: 28_051671906aff
     name: Kueche
   - id: 28_031672127fff
