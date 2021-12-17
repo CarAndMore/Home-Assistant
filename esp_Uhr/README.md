@@ -1,7 +1,8 @@
 # Meine Uhr
 Arduino _esp8266_ code: [ntp_ht16k33_uhr_v1.0.6.ino](/esp_Uhr/ntp_ht16k33_uhr_v1.0.6.ino)
 
-![modul](/img/ht16k33_clock.jpg)
+![modul](/img/ht16k33_clock.svg)
+![ESP8266 d1 Mini](/img/esp8266_d1mini.svg)
 
 install Libs:
 - Adafruit_GFX.h
