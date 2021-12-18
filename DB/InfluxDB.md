@@ -15,11 +15,11 @@ ssl: false
 8086/tcp:  8086
 ```
 auf der Benutzeroberfläsche:
-Add Datenbank _homeassistant_
 
+Add Datenbank _homeassistant_
 ![influxDB1 add DB](/img/influxDB1.jpg)
 
-Add User
+Add User _carandmore_
 ![influxDB add User](/img/influxDB2.jpg)
 
 Rechte setzen **all**
@@ -54,3 +54,5 @@ influxdb:
     instance: prod
     source: hass
 ```
+
+Home Assistent Neu Starten...
