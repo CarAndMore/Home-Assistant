@@ -1,6 +1,6 @@
-# Datenbank
+# InfluxDB
 
-## InfluxDB
+## Config Addon
 
 ```yml
 auth: true
