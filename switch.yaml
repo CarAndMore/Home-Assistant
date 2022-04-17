@@ -30,6 +30,7 @@ switch:
       RF_sw_8: # id 4
         code_on: 5248273
         code_off: 5248276
+      # EURODOMEST RF REMOTE
       RF_sw_Euro_1: # id 1
         code_on: 6764207
         code_off: 6764206
