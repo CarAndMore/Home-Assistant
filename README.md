@@ -4,7 +4,7 @@ Meine Home Assistant einstellungen
 
 <h3>Home-Assistant</h3>
 <ul>
-  <li>switch.yaml RF-Codes (RF-Sender)</li>
+  <li>switch.yaml RF-Codes (RF-Sender) !!! ab Home Assistant Core Version 2022.4.x ist dias pi-rf rausgeflogen</li>
 </ul>
 <br />
 <h3>esp Home</h3>
