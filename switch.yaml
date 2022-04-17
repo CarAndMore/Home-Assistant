@@ -30,3 +30,18 @@ switch:
       RF_sw_8: # id 4
         code_on: 5248273
         code_off: 5248276
+      RF_sw_Euro_1: # id 1
+        code_on: 6764207
+        code_off: 6764206
+      RF_sw_Euro_2: # id 2
+        code_on: 6764205
+        code_off: 6764204
+      RF_sw_Euro_3: # id 3
+        code_on: 6764203
+        code_off: 6764203
+      RF_sw_Euro_4: # id 4
+        code_on: 6764199
+        code_off: 6764198
+      RF_sw_Euro_all: # id Alle
+        code_on: 6764194
+        code_off: 6764193
